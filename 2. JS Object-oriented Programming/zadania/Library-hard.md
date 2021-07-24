@@ -15,13 +15,14 @@
 ## Cele główne
 
 * [ ] Stwórz strukturę danych związaną z biblioteką, pełen opis znajduję się w kodzie poniżej
+* [ ] Wypracuj obiekt charakteryzujący użytkownika
 * [ ] Wypracuj obiekt charakteryzujący książkę
 * [ ] Wypracuj obiekt charakteryzujący wypożyczenie
 * [ ] Wypracuj obiekt charakteryzujący bibliotekę
 
 ## Cele opcjonalne do wykonania
 
-* [ ] Brak
+* [ ] Dodaj możliwość posiadania więcej niż jednej książki w bibliotece - będzie trzeba zmienić logikę dodawania i usuwania książki z biblioteki (np. jeżeli książka jest już w bibliotece to dodajemy do niej kolejną sztukę). Wtedy klasa Book będzie musiała mieć parametr quantity oraz metodę changeQuantity.
 
 ## Przydatne linki
 
@@ -31,22 +32,29 @@
 ## Kawałek kodu dla lepszego początku!
 
 ```javascript
+class User {
+    // Ma miec: Imie, Nazwisko, uuid
+} 
+
 class Book {
     // Ma miec: Tytuł, Autora, uuid, losowe zdjęcie oraz krótki opis
 }
 
 class Booking {
-    // Ma mieć: datę wypożyczenia, datę zwrotu( +7d od wypożyczenia), id wypożyczonej, pozycji, jej tytuł. kara
+    // Booking dostaje użytkownika w constructorze
+
+    // Ma mieć: datę wypożyczenia, datę zwrotu (+7d od wypożyczenia), listę wyporzyczonych książek, kara
+    
     // Ma umożliwiać: 
-    // - wypożyczenie ksiązki (jesli książki nie ma w liście - jest niedostepna/
-    // wypożyczona ma zwracać informację) jesli jest dostępna usuwać książkę z listy
-    // dostępnych, 
+    // - usuwanie i dodawanie książki do listy wyporzyczonych książek
     // - zwrot - jeśli odbędzie się terminowo kara jest 0 - jesli nie - 
     // każdy dzień zwłoki to naliczenie jakiejś kary. 
 }
 
 class Library {
-    // Ma miec: listę książek, listę wypożyczeń oraz listę wypożyczonych książek
+    // Ma miec: listę książek, listę książek dostępnych (które nie zostały wyporzyczone),
+    // lista wyporzyczeń, lista użytkowników
+    
     // Ma umożliwiać: 
     // - dodawanie książek do listy
     // - usuwanie książek z listy
