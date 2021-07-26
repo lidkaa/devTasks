@@ -3,6 +3,7 @@
 <br>
 
 ## Wymagana wiedza
+
 - Podstawy Javascript
 - Podstawy Typescript
 - Podstawy Object Oriented Programming(OOP)
@@ -14,7 +15,7 @@
 
 ## Cele główne
 
-* [ ] Wykorzystując wzorzec projektowy Builder stwórz obiekt json reprezentujacy wszystkie parametry maila(parametry znajdują sie w kodzie poniżej)
+* [ ] Wykorzystując wzorzec projektowy Builder stwórz obiekt json reprezentujacy wszystkie parametry maila (parametry znajdują sie w kodzie poniżej)
 
 ## Cele opcjonalne do wykonania
 
@@ -23,16 +24,28 @@
 ## Przydatne linki
 
 - Czym jest wzorzec projektowy "Builder" - https://refactoring.guru/pl/design-patterns/builder/typescript/example#example-0
+- Filmik o wzorcu "Builder" - https://www.youtube.com/watch?v=M7Xi1yO_s8E
 
 ## Kawałek kodu dla lepszego początku!
 
 ```javascript
-// - FROM
-// - TO
-// - CC
-// - BCC
-// - TITLE
-// - HTML
-
-class EmailBuilder{}
+class EmailBuilder{
+  constructor() {
+    this._mail = {
+      from: "",
+      to: "",
+      title: "",
+      cc: [],
+      bcc: [],
+      html: "",
+    };
+  }
+  
+  // Stwórz metody które będą zmieniać parametry from, to, title, cc, bcc, html
+  
+  buildMail = () => {
+   // Sprawdź czy wymagane parametry mają przypisane wartości
+   // Zwróć finalnego maila
+  }
+}
 ```
