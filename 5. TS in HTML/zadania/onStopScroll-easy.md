@@ -20,7 +20,7 @@
 * [ ] Stwórz w elemencie `body` diva o id `sticky__menu` który działa w oparciu o klasy `scrolling/not-scrolling`:
 - `#sticky__menu` ma miec `position:fixed` i ma być "przyklejony" do górnej części ekranu
 - `#sticky__menu` ma mieć `width: 100px` oraz `height: 50px`, jeśli aktualnie występuje w klasie `scrolling`,
-- `#sticky__menu` ma mieć `width: 100%` oraz `height: 80px`, jeśli aktualnie występuje w klasie `not-scrilling`,
+- `#sticky__menu` ma mieć `width: 100%` oraz `height: 80px`, jeśli aktualnie występuje w klasie `not-scrolling`,
 - `#sticky__menu` ma animować zarówno wysokość jak i szerokość w czasie .3s
 
 ## Przydatne linki
