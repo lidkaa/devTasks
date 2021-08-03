@@ -13,7 +13,7 @@
 ## Cele główne
 
 * [ ] Stwórz strukturę styli z właściwościami wg. metodologi BEM dla formularza.
-* [ ] Każdy input w formularzu ma mieć walidaćję inputa pozytywnie lub negatywnie (czerwona/zielona obwódka inputa)
+* [ ] Każdy input w formularzu ma mieć walidację inputa pozytywnie lub negatywnie (czerwona/zielona obwódka inputa)
 * [ ] Każdy input ma mieć modyfikator `--active`
 * [ ] Każdy input ma być oddalony od siebie w pionie o 30px
 * [ ] Każdy input ma być oddalony od bocznych krawędzi formularza o 30px
