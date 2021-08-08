@@ -14,7 +14,7 @@
 ## Cele główne
 
 * [ ] Stwóz customową parę atrybutów `data-delayed` która:
-- ma występować TYLKO RAZEm i być dostępna tylko dla tagów `<a>`
+- ma występować TYLKO RAZEM i być dostępna tylko dla tagów `<a>`
 - będzie opóźniać przekierowywanie na INNY url o kilkaset milisekund
 - wartościa atrybutu `data-delayed-href` nadpisze aktualny href
 
