@@ -18,7 +18,7 @@
 - będzie opóźniać przekierowywanie na INNY url o kilkaset milisekund
 - wartościa atrybutu `data-delayed-href` nadpisze aktualny href
 
-* [ ] Dodatkowo, wywołaj w czasie przed przekierowaniem fuknkcję:
+* [ ] Dodatkowo, wywołaj w czasie przed przekierowaniem funkcję:
 ```javascript
 function onClick(event){
     console.log('kliknięte z opóźnieniem')
