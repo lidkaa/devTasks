@@ -23,7 +23,7 @@
 
 ## Przydatne linki
 
-- Czym jest wzorzec projektowy "Builder" - https://refactoring.guru/pl/design-patterns/builder/typescript/example#example-0
+- Czym jest wzorzec projektowy "Builder" - https://refactoring.guru/pl/design-patterns/builder
 - Filmik o wzorcu "Builder" - https://www.youtube.com/watch?v=M7Xi1yO_s8E
 
 ## Kawałek kodu dla lepszego początku!
