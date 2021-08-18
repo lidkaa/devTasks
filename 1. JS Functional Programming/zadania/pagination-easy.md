@@ -24,11 +24,18 @@
 ## Kawałek kodu dla lepszego początku!
 
 ```javascript
-// actualPageIdx to index wybranej strony
+// actualPageIdx to index wybranej strony (indexujemy od 0)
 // entriesOnPage to maksymalna zwracana ilość elementów z dataEntries dla wybranej strony
+
+// przykładowe dane
+const data = [1,2,3,4,5,6...];
+const settings = { actualPageIdx: 1, entriesOnPage: 2 }; 
 
 const paginateArray = (dataEntries, settings) => {
   // ...
   // return entriesOnSelectedPage
 };
+
+const result = paginateArray(data, settings);
+// result === [3,4]
 ```
