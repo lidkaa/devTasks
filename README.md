@@ -16,7 +16,7 @@ jeśli Twoja wiedza nie jest wystarczająca, aby podjąć się realizacji zadań
 https://docs.google.com/spreadsheets/d/1rtsiw2xnc0L-bCCVjkfe-6CO_RU54iHgEQhh68O_ya0/edit#gid=0
 
 #### Autorskie nagrania na tematy teoretyczne i praktyczne można znaleźć tutaj:
-- https://gladiators-of-javascript.com/records
+- https://academy.localhost-group.com/records/
 
 ## Gotowe środowiska developerskie, które pozwalają zrealizować każde z zadań z tego repozytorium
 
