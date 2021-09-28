@@ -30,7 +30,6 @@
 
 - GeolocationAPI - https://developer.mozilla.org/pl/docs/Web/API/Geolocation_API
 - "Top 10 API" - https://rapidapi.com/blog/ip-geolocation-api/
-- Axios (biblioteka do obsługi zapytań) - https://github.com/axios/axios
 
 ## Kawałek kodu dla lepszego początku!
 
