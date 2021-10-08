@@ -43,7 +43,7 @@ class Book {
 class Booking {
     // Booking dostaje użytkownika w constructorze
 
-    // Ma mieć: datę wypożyczenia, datę zwrotu (+7d od wypożyczenia), listę wyporzyczonych książek, kara
+    // Ma mieć: datę wypożyczenia, datę zwrotu (+7d od wypożyczenia), listę wypożyczonych książek, kara
     
     // Ma umożliwiać: 
     // - usuwanie i dodawanie książki do listy wyporzyczonych książek
