@@ -52,7 +52,7 @@ class Booking {
 }
 
 class Library {
-    // Ma miec: listę książek, listę książek dostępnych (które nie zostały wyporzyczone),
+    // Ma miec: listę książek, listę książek dostępnych (które nie zostały wypożyczone),
     // lista wyporzyczeń, lista użytkowników
     
     // Ma umożliwiać: 
