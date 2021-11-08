@@ -2,11 +2,11 @@
     {
         "_id": "5e9df382fc302216f08b46b1",
         "name": "Ivy Mitchell",
-        "age": 40,
         "gender": "female",
         "company": "TALAE",
         "email": "ivymitchell@talae.com",
         "phone": "+1 (838) 597-2008",
+        "car": "Nissan Juke",
         "tags": [
             "cupidatat",
             "et",
@@ -41,8 +41,6 @@
         "age": 33,
         "gender": "male",
         "company": "MARKETOID",
-        "email": "buckleyharper@marketoid.com",
-        "phone": "+1 (931) 478-3483",
         "tags": [
             "Lorem",
             "commodo",
@@ -58,7 +56,6 @@
         "name": "Pollard Farley",
         "age": 23,
         "gender": "male",
-        "company": "UNCORP",
         "email": "pollardfarley@uncorp.com",
         "phone": "+1 (969) 592-2232",
         "tags": [
@@ -74,19 +71,14 @@
     {
         "_id": "5e9df3820b489f341a421aa7",
         "name": "Esperanza Gates",
-        "age": 32,
-        "gender": "female",
         "company": "OVERFORK",
         "email": "esperanzagates@overfork.com",
         "phone": "+1 (928) 540-3318",
+        "car": "Toyota Camry",
         "tags": [
             "sit",
             "qui",
-            "labore",
-            "ea",
-            "veniam",
-            "non",
-            "dolor"
+            "labore"
         ]
     },
     {
@@ -97,6 +89,7 @@
         "company": "CODAX",
         "email": "mccarthybrooks@codax.com",
         "phone": "+1 (886) 592-3578",
+        "car": "Tesla S",
         "tags": [
             "eiusmod",
             "aliqua",
@@ -111,10 +104,7 @@
         "_id": "5e9df382ec22953b82005d4b",
         "name": "Beverley Kramer",
         "age": 40,
-        "gender": "female",
-        "company": "ZYPLE",
-        "email": "beverleykramer@zyple.com",
-        "phone": "+1 (873) 440-2676",
+        "car": "Audi A4",
         "tags": [
             "aliquip",
             "ipsum",
@@ -135,8 +125,6 @@
         "phone": "+1 (932) 592-2306",
         "tags": [
             "minim",
-            "elit",
-            "magna",
             "aliquip",
             "qui",
             "voluptate",
@@ -151,6 +139,7 @@
         "company": "BIOSPAN",
         "email": "hoodbrowning@biospan.com",
         "phone": "+1 (835) 565-2597",
+        "car": "Porsche 911",
         "tags": [
             "voluptate",
             "dolore",
@@ -169,6 +158,7 @@
         "company": "ISOLOGICA",
         "email": "jaimealvarez@isologica.com",
         "phone": "+1 (974) 498-3471",
+        "car": "Ford Mustang",
         "tags": [
             "laboris",
             "ut",
