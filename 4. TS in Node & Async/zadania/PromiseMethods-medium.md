@@ -17,6 +17,7 @@
 * [ ] Wypracowanie funkcji **promise.race(arrayOfPromises)**
 * [ ] Wypracowanie funkcji **promise.last(arrayOfPromise)**
 * [ ] Wypracowanie funkcji **promise.ignoreErrors(arrayOfPromise)**
+* [ ] Wykonaj zadanie przy pomocy operatorów async/await i bez nich
 
 ## Cele opcjonalne do wykonania
 
