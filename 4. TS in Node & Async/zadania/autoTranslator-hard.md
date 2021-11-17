@@ -15,8 +15,7 @@
 ## Cele główne
 
 * [ ] Integracja z API google translator
-* [ ] Pobranie wszystkich danych językowych
-* [ ] Przetłumaczenie ich poprzez API google translate na język podany w requestBody
+* [ ] Przetłumaczenie pól obiektu poprzez API googla translatora podany w requestBody
 * [ ] Zapis wszystkich danych we wskazanym języku w formie pliku js o nazwie tego języka (dla angielskiego będzie to en.json)
 * [ ] W response zwrócić kompletny obiekt z tekstami
 
