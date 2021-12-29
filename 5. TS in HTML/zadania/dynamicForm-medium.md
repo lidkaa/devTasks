@@ -20,8 +20,10 @@ const testSettings = {
     action:'/contact/by-mail',
     method:'POST',
     inputs:[
+        {type:'header'},
         {type:'header', label:'Skontaktuj się z nami'},
-        {name:'email', type:'email', placeholder:'Wpisz swój email'},
+        {name:'yourEmail', type:'email', placeholder:'Wpisz swój email'},
+        {type:'email'},
         {name:'content', type:'textarea', placeholder:'Wpisz treść wiadomości'},
         {type:'submit', label:'Wyślij wiadomość'}
     ]
@@ -30,8 +32,10 @@ const testSettings = {
 - Formularz wygenerowany za pomocą funkcji `generateFormOnPattern`:
 ```html
 <form method="POST" action="/contact/by-mail">
+    <h4>Formularz</h4>
     <h4>Skontaktuj się z nami</h4>
-    <input type="email" name="email" placeholder="Wpisz swój email">
+    <input type="email" name="yourEmail" placeholder="Wpisz swój email">
+    <input type="email" name="email" placeholder="Wpisz email">
     <textarea name="content" placeholder="Wpisz treść wiadomości"></textarea>
     <button>
         Wyślij wiadomość
@@ -40,6 +44,8 @@ const testSettings = {
 ```
 
 * [ ] Do wykonania zadania możesz użyć ustawień `testSettings`
+
+* [ ] W każdym elemencie tablicy settings musi być jeden z czterech typów: header, email, textarea, submit. Reszta parametrów jest opcjonalna.
 
 ## Przydatne linki
 
