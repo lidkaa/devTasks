@@ -3,24 +3,26 @@
 <br>
 
 ## Wymagana wiedza
+
 - Solidne podstawy JS-a.
 - Podstawowe umiejętności pisania testów z Jest
- 
+
 ## Technologie potrzebne do zadania
+
 - Jest
 
-## Cele główne #1 
+## Cele główne #1
 
-* [ ] Zaprojektuj testy, do wszystkich zadań z modułu drugiego według warunków: 
-* [ ] Przetestuj zachowanie podczas gdy do constructorów/metod wrzucamy dobre/złe argumenty
+- [ ] Zaprojektuj testy, do wszystkich zadań z modułu drugiego według warunków:
+- [ ] Przetestuj zachowanie podczas gdy do constructorów/metod wrzucamy dobre/złe argumenty
 
 ## Cele główne #2
 
-* [ ] Następnie pomyśl jak stworzyć bliski rzeczywistości scenariusz testowy, aby przetestować poprawne działanie współpracujących klas(spójrz poniżej przykładowy scenariusz)
+- [ ] Następnie pomyśl jak stworzyć bliski rzeczywistości scenariusz testowy, aby przetestować poprawne działanie współpracujących klas(spójrz poniżej przykładowy scenariusz)
 
 ## Cele opcjonalne do wykonania
 
-* [ ] Brak
+- [ ] Brak
 
 ## Przydatne linki
 

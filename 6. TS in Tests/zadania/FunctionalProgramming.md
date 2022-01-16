@@ -1,23 +1,25 @@
-<h2 align="center">Opis testóœ do zadania FunctionalProgramming </h2>
+<h2 align="center">Opis testów do zadania FunctionalProgramming</h2>
 
 <br>
 
 ## Wymagana wiedza
+
 - Solidne podstawy JS-a.
 - Podstawowe umiejętności pisania testów z Jest
- 
+
 ## Technologie potrzebne do zadania
+
 - Jest
 
-## Cele główne #1 
+## Cele główne #1
 
-* [ ] Zaprojektuj testy, do wszystkich zadań z modułu pierwszego według warunków: 
-* [ ] Przetestuj zachowanie funkcji gdy wrzucamy do niej dobre/złe arugmenty
-* [ ] Przetestuj co jest zwracane z funkcji gdy wrzucamy do niej dobre/złe argumenty
+- [ ] Zaprojektuj testy, do wszystkich zadań z modułu pierwszego według warunków:
+- [ ] Przetestuj zachowanie funkcji gdy wrzucamy do niej dobre/złe arugmenty
+- [ ] Przetestuj co jest zwracane z funkcji gdy wrzucamy do niej dobre/złe argumenty
 
 ## Cele opcjonalne do wykonania
 
-* [ ] Brak
+- [ ] Brak
 
 ## Przydatne linki
 
