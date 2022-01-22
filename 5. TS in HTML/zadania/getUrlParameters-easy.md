@@ -27,7 +27,7 @@
 ```javascript
 function getUrlParameters(url){}
 
-const urlString = "url.com/postcolors[2]=red&valid=true&colors[0]=green&user=Jan&age=25";
+const urlString = "url.com/post?colors[2]=red&valid=true&colors[0]=green&user=Jan&age=25";
 const result = getUrlParameters(urlString);
 // result === { colors: [ 'green', undefined, 'red' ], valid: true, user: 'Jan', age: 25 }
 ```
