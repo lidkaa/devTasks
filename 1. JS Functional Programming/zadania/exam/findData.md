@@ -12,7 +12,7 @@
 
 - [ ] Napisz funkcję pozwalającą połączyć dane występujące w różnych tablicach w nowy obiekt.
 - [ ] Dane należy połaczyć jeśli jakiekolwiek pola obiektów z tablic są identyczne, pod warunkiem że reszta pól nie koliduje ze sobą
-- [ ] Funkcja powinna przyjmować tablicę tablic jako argument.
+- [ ] Funkcja powinna przyjmować tablicę obiektów jako argument.
 - [ ] Nie wszystkie tablice mają tą samą długość, oraz nie każdy obiekt posiada tą samą ilość odpowiadających mu wartości.
 - [ ] Z metod tablicowych skorzystaj tylko z metody reduce().
 
