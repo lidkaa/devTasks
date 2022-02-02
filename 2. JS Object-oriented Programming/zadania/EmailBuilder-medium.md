@@ -44,7 +44,6 @@ class EmailBuilder{
   // Stwórz metody które będą zmieniać parametry from, to, title, cc, bcc, html
   
   buildMail = () => {
-   // Sprawdź czy wymagane parametry mają przypisane wartości
    // Zwróć finalnego maila
   }
 }
