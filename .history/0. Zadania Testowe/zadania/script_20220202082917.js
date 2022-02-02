@@ -1,1 +1,0 @@
-let photoH = document.querySelector('.cell:hover');
