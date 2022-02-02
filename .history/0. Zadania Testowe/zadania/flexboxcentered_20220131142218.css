@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.presentation {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cells {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    height: 80vh;
+    width: 80vw;
+    background-color: aquamarine;
+}
+
+.cell {
+    height: 10em;
+    width: 15em;
+    border: 1px solid black;
+    margin: 0 90px;
+    overflow: hidden;
+}
+
+img {
+    object-fit: fill;
+  }
