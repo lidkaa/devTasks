@@ -21,4 +21,7 @@
 * Discover
 
 - [ ] Za pomocą podanych powyżej materiałów napisz funkcję która jako argument przyjmuje numer karty, a zwraca wartość boolean oraz producenta karty (o ile numer jest poprawny)
-- [ ] [Do testowania funkcji skorzystaj z ogólnie przyjetych numerów kart kredytowych do testów](https://testerzy.pl/artykuly/numery-kart-kredytowych-do-testow)
+
+- [ ] Do testowania funkcji skorzystaj z ogólnie przyjetych numerów kart kredytowych do testów:
+  - [Przykładowe karty od Stripe'a](https://stripe.com/docs/testing#cards)
+  - [Przykładowe karty od Paypala'a](https://developer.paypal.com/api/nvp-soap/payflow/payflow-pro/payflow-pro-testing/#link-creditcardnumbersfortesting)
