@@ -46,7 +46,7 @@ class Booking {
     // Ma mieć: datę wypożyczenia, datę zwrotu (+7d od wypożyczenia), listę wypożyczonych książek, kara
     
     // Ma umożliwiać: 
-    // - usuwanie i dodawanie książki do listy wyporzyczonych książek
+    // - usuwanie i dodawanie książki do listy wypożyczonych książek
     // - zwrot - jeśli odbędzie się terminowo kara jest 0 - jesli nie - 
     // każdy dzień zwłoki to naliczenie jakiejś kary. 
 }
