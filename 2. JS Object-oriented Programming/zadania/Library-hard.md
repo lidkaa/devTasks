@@ -22,7 +22,7 @@
 
 ## Cele opcjonalne do wykonania
 
-* [ ] Dodaj możliwość posiadania więcej niż jednej książki w bibliotece - będzie trzeba zmienić logikę dodawania i usuwania książki z biblioteki (np. jeżeli książka jest już w bibliotece to dodajemy do niej kolejną sztukę). Wtedy klasa Book będzie musiała mieć parametr quantity oraz metodę changeQuantity.
+* [ ] Dodaj możliwość posiadania więcej niż jednej książki w bibliotece - będzie trzeba zmienić logikę dodawania i usuwania książki z biblioteki (np. jeżeli książka jest już w bibliotece to dodajemy do niej kolejną sztukę).
 
 ## Przydatne linki
 
