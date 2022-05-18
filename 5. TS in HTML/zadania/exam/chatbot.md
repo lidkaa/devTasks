@@ -19,8 +19,6 @@
 
 * Kliknięcie poza obszar chatbota powoduje jego zamknięcie
 
-* Na górnym pasku
-
 - [ ] Po otwarciu okna ma pojawic się kilka opcji predefiniowanych, po kliknięciu w które pojawia się odpowiedź w dymku, a zaraz poniżej po raz kolejny wszystkie opcje predefiniowane
 
 - [ ] Pole tekstowe ma być aktywne, a bot ma przeszukiwać wpisany tekst pod względem słowa-kluczy i zwracać prawdopodobne odpowiedzi z opcji predefiniowanych
