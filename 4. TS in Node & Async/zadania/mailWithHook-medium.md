@@ -16,7 +16,7 @@
 ## Cele główne
 
 - [ ] Stwórz endpoint na metodzie GET, który wyślę maila z losową treścią i przyciskiem do kliknięcia
-- [ ] Użytkownik w przypadku kliknięcia maila nr1 powinien otrzymać maila nr2
+- [ ] Użytkownik w przypadku otworzenia pierszego maila automatycznie powinien otrzymać drugiego maila
 
 ## Cele opcjonalne do wykonania
 
