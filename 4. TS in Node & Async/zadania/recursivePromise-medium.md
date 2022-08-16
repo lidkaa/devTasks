@@ -2,10 +2,6 @@
 
 <br>
 
-## Technologie potrzebne do zadania
-
-- Typescript 
-
 ## Cele główne
 
 * [ ] Stwórz funkcję tworzącą promisę o nazwie recursivePromise(arrayOfPromises), którą przyjmuję jako argument listę z promisami. 
