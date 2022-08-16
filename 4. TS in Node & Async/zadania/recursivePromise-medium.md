@@ -2,10 +2,6 @@
 
 <br>
 
-## Wymagana wiedza
-- Solidne podstawy JS-a.
-- Asynchroniczność(Promise)
- 
 ## Technologie potrzebne do zadania
 
 - Typescript 
@@ -14,13 +10,10 @@
 
 * [ ] Stwórz funkcję tworzącą promisę o nazwie recursivePromise(arrayOfPromises), którą przyjmuję jako argument listę z promisami. 
 * [ ] Na potrzeby zadania zakładamy, że każdy z elementów arrayOfPromises jest promisem i elementów w arrayOfPromises jest minimum 7. 
-* [ ] Promisy z listy mają się wywoływać kolejna po zakończeniu poprzedniej, a ostatnia w .then ma zwrócić listę ze wszystkimi wynikami promis z arrayOfPromises zachowując odpowiednią kolejność.
-* [ ] Jeśli wystąpi błąd w którejkolwiek promisie ma on zostać zwrócony do .catch wraz z poprzednimi wynikami z promis niewykonując kolejnych
+* [ ] Promisy z listy mają się wywoływać kolejna po zakończeniu poprzedniej, a ostatnia ma zwrócić listę ze wszystkimi wynikamiz arrayOfPromises zachowując odpowiednią kolejność.
+* [ ] Jeśli wystąpi błąd w której kolwiek promisie ma on zostać zwrócony wraz z poprzednimi wynikami z promis niewykonując kolejnych
 * [ ] Wykonaj zadanie przy pomocy operatorów async/await i bez nich
 
-## Cele opcjonalne do wykonania
-
-* [ ] Brak
 
 ## Przydatne linki
 
