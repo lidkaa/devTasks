@@ -104,6 +104,10 @@ const data = [
         id: 3,
         name: "Noble Wilkerson",
       },
+            {
+        id: 3,
+        name: "Herminia Witt",
+      }
     ],
   },
   {
@@ -115,7 +119,7 @@ const data = [
     company: "GORGANIC",
     email: "marinaporter@gorganic.com",
     phone: "+1 (867) 417-3497",
-    tags: ["laborum", "aliquip", "sit", "adipisicing", "aute", "cupidatat", "aliquip"],
+    tags: [344, "laborum", "aliquip", "sit", "adipisicing", "aute yyy", "cupidatat", "aliquip"],
     friends: [
       {
         id: 0,
