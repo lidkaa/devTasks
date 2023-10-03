@@ -2,23 +2,24 @@
 // Ma umożliwiać: aktualizację datę modyfikacji, pozwalac na modyfikację imienia, nazwiska oraz adresu email
 
 import { v4 as uuidv4 } from 'uuid';
-import { isValueStringEmpty, isValueStringType, isValueValidEmailFormat } from '../../../../utils/validation.js'
+import { Validations } from '../Utils/validation.js'
 
 export class Contact {
 
-    // zastosowac object przy wiecej niz 3 argumentach
-    constructor(firstname, lastname, mail, age) {
+    constructor(contactData) {
         // brak walidacji
+        this._init(contactData)
 
-        const creationDate = new Date()
+
+        const creationDate = new Date();
 
         this._id = uuidv4();
         this._creationDate = creationDate;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.age = age
-        this.mail = mail;
         this.modificationDate = creationDate;
+        this.firstname = null
+        this.lastname = null
+        this.mail = null
+        this.age = null
     }
 
     get creationDate() {
@@ -29,14 +30,37 @@ export class Contact {
         return this._id;
     }
 
-    getProperty(seekedKey) { // id // creationDate
-        const availableKeysToGet = []
+    _init(data) {
+        this.validateData(data)
 
-        const keys = Object.keys()
+        const { firstname,
+            lastname,
+            mail,
+            age
+        } = data
 
-        const foundKey = keys.find(key => seekedKey === key)
+        this.firstname = firstname
+        this.lastname = lastname
+        this.mail = mail
+        this.age = age
+    }
 
-        return this[key]
+    validateData(data) {
+        Validations.isValueStringType([data.firstname, data.lastname])
+            .isValueStringEmpty([data.firstname, data.lastname])
+            .isValueValidEmailFormat(data.mail)
+            .isValueNumberType(data.age)
+            .isValueNumberBiggerThanZero(data.age);
+
+        // -----------------------------------------------
+        // Validation.toCheck(value1).isValueStringType().isValueStringEmpty()
+        // // -----------------------------------------------
+        // Validation.toCheck(value2).isValueStringType().isValueStringEmpty()
+        // // -----------------------------------------------
+        // Validation.toCheck(value3).isValueStringType().isValueStringEmpty().isValueValidEmailFormat()
+        // // -----------------------------------------------
+        // Validation.toCheck(numericValue).isValidNumber()
+        // -----------------------------------------------
     }
 
     update(key, newValue) {
@@ -45,16 +69,32 @@ export class Contact {
 
         if (!isKeyPresent) return;
 
-        const paramsToValidate = [key, newValue];
+        Validations
+            .isValueStringType(key)
+            .isValueStringEmpty(key);
 
-        isValueStringType(paramsToValidate)
-        isValueStringEmpty(paramsToValidate);
+        if (key === 'age') {
+            Validations
+                .isValueNumberType(newValue)
+                .isValueNumberBiggerThanZero(newValue);
+        }
+        if (key === 'phone') {
+            Validations
+                .isValueNumberType(newValue)
+                .isValueNumberBiggerThanZero(newValue);
+        }
 
-        if (key === 'mail') {
-            const isMailValid = isValueValidEmailFormat(newValue);
-            if (isMailValid) this.mail = newValue;
-        } else this[key] = newValue;
+        if (typeof newValue === 'string') {
 
+            Validations
+                .isValueStringType(newValue)
+                .isValueStringEmpty(newValue);
+
+            if (key === 'mail') Validations.isValueValidEmailFormat(newValue);
+
+        }
+
+        this[key] = newValue;
         this.modificationDate = new Date();
     }
 }

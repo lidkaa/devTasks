@@ -1,4 +1,4 @@
-import { isValueStringType, isValueNumberType } from '../../../../utils/validation.js';
+import { Validations } from './validation.js';
 
 const filter = (dataChunk, phraseString) => {
 
@@ -28,8 +28,12 @@ const filter = (dataChunk, phraseString) => {
 
 
 export const filterData = (data, phrase) => {
-    const isPhraseString = isValueStringType([phrase], { printErrorMessage: false });
-    const isPhraseNumber = isValueNumberType([phrase], { printErrorMessage: false });
+    Validations
+        .isValueStringType(phrase, { printErrorMessage: false })
+        .isValueNumberType(phrase, { printErrorMessage: false });
+
+    const isPhraseString = Validations._isValueStringType;
+    const isPhraseNumber = Validations._isValueNumberType;
 
     if (!isPhraseString && !isPhraseNumber) throw new Error('Pass proper phrase type: string or number');
 
@@ -38,13 +42,7 @@ export const filterData = (data, phrase) => {
     const isPhraseLongEnough = phraseString.length > 2
     if (!isPhraseLongEnough) return [];
 
-    const dataToFilter = [];
-
-    for (const val in data) {
-        dataToFilter.push(...data[val]);
-    }
-
-    const result = dataToFilter.filter(dataPart => {
+    const result = data.filter(dataPart => {
         for (const val in dataPart) {
             const dataChunk = dataPart[val];
 
