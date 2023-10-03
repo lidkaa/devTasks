@@ -3,8 +3,8 @@ import { isValueNumberIsBiggerThanZero, isValueNumberType, isValueStringEmpty, i
 const getMyAge = (value) => {
     const valueToValidate = [value];
     const isDateObjectValidValue = value instanceof Date;
-    const isNumberValidValue = isValueNumberType(valueToValidate, false) && isValueNumberIsBiggerThanZero(valueToValidate, false);
-    const isStringValidValue = isValueStringType(valueToValidate, false) && isValueStringEmpty(valueToValidate, false);
+    const isNumberValidValue = isValueNumberType(valueToValidate, { shouldThrowError: false }) && isValueNumberIsBiggerThanZero(valueToValidate, { shouldThrowError: false });
+    const isStringValidValue = isValueStringType(valueToValidate, { shouldThrowError: false }) && isValueStringEmpty(valueToValidate, { shouldThrowError: false });
     const isCorrectInput = isDateObjectValidValue || isStringValidValue || isNumberValidValue;
 
     if (!isCorrectInput) throw new Error('Wrong date format');
@@ -12,6 +12,7 @@ const getMyAge = (value) => {
     const currentYear = new Date().getFullYear();
     let yearOfBirth = 0;
 
+    // NaN
     if (isDateObjectValidValue) yearOfBirth = value.getFullYear();
 
     yearOfBirth = parseInt(value);

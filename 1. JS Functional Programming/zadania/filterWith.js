@@ -1,46 +1,52 @@
-import { isValueStringType, isValueNumberType, isValueArrayType, isValueObjectType } from '../../utils/validation.js';
+import { isValueStringType, isValueNumberType, isValueArrayType } from '../../utils/validation.js';
 import data from './filterWith_Data.js';
+
+const filterData = (dataChunk, phraseString) => {
+
+    const phraseRegExp = new RegExp(phraseString, 'gi');
+
+    if (phraseRegExp.test(dataChunk)) {
+        return true;
+    }
+
+    if (Array.isArray(dataChunk)) {
+        for (const chunk of dataChunk) {
+            if (filterData(chunk)) return true;
+        }
+    }
+
+    if (Object.prototype.toString.call(dataChunk) === '[object Object]') {
+        for (const val in dataChunk) {
+            const chunk = dataChunk[val];
+
+            const result = filterData(chunk)
+
+            if (result) return true;
+        }
+    }
+
+    return false
+}
 
 
 const filterWith = (data, phrase) => {
-    const dataArrayToValidate = { params: [data], errorMessage: true };
-    isValueArrayType(dataArrayToValidate);
+    isValueArrayType([data]);
 
-    const phraseToValidate = { params: [phrase], errorMessage: false };
-    const isPhraseString = isValueStringType(phraseToValidate);
-    const isPhraseNumber = isValueNumberType(phraseToValidate);
+    const isPhraseString = isValueStringType([phrase], { printErrorMessage: false });
+    const isPhraseNumber = isValueNumberType([phrase], { printErrorMessage: false });
 
-    const isPhraseCorrectType = isPhraseString || isPhraseNumber;
-    if (!isPhraseCorrectType) throw new Error('Pass proper phrase type: string or number');
+    if (!isPhraseString && !isPhraseNumber) throw new Error('Pass proper phrase type: string or number');
 
-    const isPhraseLongEnough = phrase.toString().length > 2
+    const phraseString = phrase.toString();
+
+    const isPhraseLongEnough = phraseString.length > 2
     if (!isPhraseLongEnough) return [];
 
-    const phraseRegExp = new RegExp(phrase, 'gi');
 
-    const result = data.filter((dataPart, index, data) => {
-
+    const result = data.filter(dataPart => {
         for (const val in dataPart) {
-
             const dataChunk = dataPart[val];
-
-            // to dziala wtedy kiedy value -> string
-            // to dziala tylko i wylacznie kiedy jst STRING
-            if (phraseRegExp.test(dataChunk)) return true;
-
-            // to dziala tylko i wylacznie kiedy jest ARRAY
-            if (Array.isArray(dataChunk)) {
-
-                for (const chunk of dataChunk) {
-
-                    if (phraseRegExp.test(chunk)) return true;
-
-                    if (typeof chunk === 'object') {
-                        const filterResultArray = filterWith(dataChunk, phrase);
-                        if (filterResultArray.length > 0) return true;
-                    }
-                }
-            }
+            if (filterData(dataChunk, phraseString)) return true;
         }
     })
 
@@ -48,5 +54,4 @@ const filterWith = (data, phrase) => {
 }
 
 const dataToFilter = data.data;
-console.log(filterWith(dataToFilter, '100'));
-
+console.log(filterWith(dataToFilter, 'Luann Randall'));

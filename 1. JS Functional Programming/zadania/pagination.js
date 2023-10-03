@@ -19,19 +19,14 @@ const paginateArray = (data, settings) => {
     const itemsAmount = data.length;
     const isEntriesNumberCorrect = entriesOnPage <= itemsAmount;
 
-    try {
-        if (!isEntriesNumberCorrect) throw new Error(`Wrong entries number. Pick the entries' number from a scope 1 to ${itemsAmount}`);
-    } catch (error) {
-        console.log(error);
-    }
+    if (!isEntriesNumberCorrect) throw new Error(`Wrong entries number. Pick the entries' number from a scope 1 to ${itemsAmount}`);
 
     const numberOfPages = Math.ceil(itemsAmount / entriesOnPage);
     const isPageIndexCorrect = numberOfPages > actualPageIndex;
 
-    try {
-        if (!isPageIndexCorrect) throw new Error(`Wrong page index. Pick the page index from a scope 0 to ${numberOfPages - 1}`);
-    } catch (error) {
-        console.log(error);
+    if (!isPageIndexCorrect) {
+        const maxPageValue = numberOfPages - 1
+        throw new Error(`Wrong page index. Pick the page index from a scope 0 to ${maxPageValue}`);
     }
 
     const indexOfFirstShownElement = actualPageIndex * entriesOnPage;

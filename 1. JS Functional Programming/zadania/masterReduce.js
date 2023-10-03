@@ -1,76 +1,107 @@
-import { isValueArrayType, isValueFunctionType } from '../../utils/validation.js'
+import { isValueArrayType, isValueFunctionType } from '../../utils/validation.js';
 
-const validateParams = (arr, callback) => {
-    const arrParamToValid = { params: [arr], errorMessage: true }
-    const fnParamToValid = { params: [callback], errorMessage: true }
+function mapFn(array, callback) {
+    if (array) isValueArrayType([array]);
+    if (callback) isValueFunctionType([callback]);
 
-    if (arr) isValueArrayType(arrParamToValid);
-    if (callback) isValueFunctionType(fnParamToValid);
-}
+    const copiedArray = array.slice()
 
-//-----------------------------------------------//
+    const result = copiedArray.reduce((accumulator, currentValue, index, array) => {
+        const result = callback(currentValue, index, array);
 
-const callbackMapFn = (accumulator, currentValue) => {
-    accumulator.push(currentValue / 2);
-    return accumulator;
-}
+        return accumulator.concat(result)
 
-const callbackFilterFn = (accumulator, currentValue) => {
-    if (currentValue > 2) accumulator.push(currentValue);
-    return accumulator;
-}
+        // accumulator.push(result);
 
-const callbackEveryFn = (accumulator, currentValue) => {
-    if (!accumulator) return false;
-    return currentValue === 4;
-}
+        //przerwe 
 
-const callbackSomeFn = (accumulator, currentValue) => {
-    if (accumulator) return true;
-    return currentValue > 1;
-}
+        // return accumulator;
 
-//----------------------------------------------//
+        // sendAccumulatorToBackend(accumulator)
 
-function mapFn(arr, callback) {
-    validateParams(arr, callback)
+        // tutaj bedzie inny code ktory wyjebie apke
 
-    const result = arr.reduce(callback, []);
+    }, []);
+
     return result;
 }
 
-const arry = ['a', 'b', 'c']
-const q = mapFn(arry, (el, index) => undefined)
-const w = arry.map((el, index) => undefined)
+const arrMap = ['a', 'b', 'c']
+const reduceMap = mapFn(arrMap, (el, index) => undefined);
+const nativeMap = arrMap.map((el, index) => undefined)
 
-console.log(q);
-console.log(w);
+console.log(reduceMap);
+console.log(nativeMap);
 
-function filterFn(arr, callback) {
-    validateParams(arr, callback)
+// ----------------------------------------------------------------------//
+function filterFn(array, callback) {
+    if (array) isValueArrayType([array]);
+    if (callback) isValueFunctionType([callback]);
 
-    const result = arr.reduce(callback, []);
+    const result = array.reduce((accumulator, currentValue, index, array) => {
+        const result = callback(currentValue, index, array);
+        if (result) accumulator.push(currentValue);
+        return accumulator;
+    }, []);
+
     return result;
 }
 
-function everyFn(arr, callback) {
-    validateParams(arr, callback)
+const arrFilter = [2, 4, 5]
+const reduceFilter = filterFn(arrFilter, (el, index) => index % 2 === 0);
+const nativeFilter = arrFilter.filter((el, index) => index % 2 === 0)
 
-    const result = arr.reduce(callback);
-    if (!result) return false;
-    return true;
+console.log(reduceFilter);
+console.log(nativeFilter);
+
+// ----------------------------------------------------------------------//
+function everyFn(array, callback) {
+    if (array) isValueArrayType([array]);
+    if (callback) isValueFunctionType([callback]);
+
+    const copiedArray = array.slice();
+
+    return copiedArray.reduce((accumulator, currentValue, index, array) => {
+        const resultOfCallback = callback(currentValue, index, array);
+        if (!resultOfCallback) {
+            copiedArray.splice(index);
+            return false;
+        }
+
+        return accumulator;
+
+    }, true);
 }
 
-function someFn(arr, callback) {
-    validateParams(arr, callback)
+const arrEvery = [4, 3, 8];
+const reduceEvery = everyFn(arrEvery, (el, index) => el % 2 === 0);
+const nativeEvery = arrEvery.every((el, index) => el % 2 === 0)
 
-    const result = arr.reduce(callback, false);
-    return result;
+console.log('reduceEvery', reduceEvery);
+console.log('nativeEvery', nativeEvery);
+
+// ----------------------------------------------------------------------//
+function someFn(array, callback) {
+    if (array) isValueArrayType([array]);
+    if (callback) isValueFunctionType([callback]);
+
+    const copiedArray = array.slice();
+
+    return copiedArray.reduce((accumulator, currentValue, index, array) => {
+        const resultOfCallback = callback(currentValue, index, array);
+        if (resultOfCallback) {
+            copiedArray.splice(index);
+            return true;
+        }
+
+        return accumulator;
+    }, false);
+
 }
 
-const arr = [4, 2, 3, 4];
+const arrSome = [6, 3, 9];
+const reduceSome = someFn(arrSome, (el, index) => el % 2 === 0);
+const nativeSome = arrSome.some((el, index) => el % 2 === 0)
 
-console.log('mapFn', mapFn(arr, callbackMapFn));
-console.log('filterFn', filterFn(arr, callbackFilterFn));
-console.log('everyFn', everyFn(arr, callbackEveryFn));
-console.log('someFn', someFn(arr, callbackSomeFn));
+console.log('reduceSome', reduceSome);
+console.log('nativeSome', nativeSome);

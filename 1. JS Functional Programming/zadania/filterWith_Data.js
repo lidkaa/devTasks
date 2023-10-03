@@ -23,7 +23,10 @@ const data = [
     {
         _id: "5e985a0709dfa1e6fd93c6ad",
         age: 32,
-        eyeColor: "brown",
+        eyeColor: {
+            id: { 2: "Herminia Witt" },
+            name: "Loraine Harper",
+        },
         name: "Madelyn Dickson",
         gender: "female",
         company: "KENGEN",
@@ -58,7 +61,7 @@ const data = [
         company: "LINGOAGE",
         email: "mcguiremercado@lingoage.com",
         phone: "+1 (963) 450-2194",
-        tags: ["cupidatat", "occaecat", "amet", "qui", "elit", "esse", "deserunt"],
+        tags: ["cupidatat", { 1: "occaecateeeee" }, "amet", "qui", "elit", "esse", "deserunt"],
         friends: [
             {
                 id: 0,
@@ -87,7 +90,7 @@ const data = [
         company: "GORGANIC",
         email: "marinaporter@gorganic.com",
         phone: "+1 (867) 417-3497",
-        tags: ["laborum", "aliquip", "sit", "adipisicing", "aute", "cupidatat", "aliquip"],
+        tags: [{ 1: "utut", 2: "laborum" }, "aliquip", "sit", "adipisicing", "anim", "aute", "cupidatat", "aliquip"],
         friends: [
             {
                 id: 0,
@@ -95,7 +98,7 @@ const data = [
             },
             {
                 id: 1,
-                name: "Ebony Jimenez",
+                name: [{ 1: "Ebony Jimenez", 2: "Barlow Ferguson" }],
             },
         ],
     },

@@ -1,46 +1,33 @@
-import { isValueArrayType, isValueArrayEmpty, isValueObjectType } from '../../../utils/validation.js';
+import { isValueArrayType, isValueArrayEmpty, isValueObjectType, isValueObjectEmpty } from '../../../utils/validation.js';
 
 const findData = (dataToMerge) => {
-    const paramToValidate = { params: [dataToMerge], errorMessage: true };
-    isValueArrayType(paramToValidate);
-    isValueArrayEmpty(paramToValidate);
+    isValueArrayType([dataToMerge]);
+    isValueArrayEmpty([dataToMerge]);
 
     for (const value of dataToMerge) {
-        const paramsToValidate = { params: [value], errorMessage: true }
-        isValueObjectType(paramsToValidate);
+        isValueObjectType([value]);
     }
-    const restOfData = [];
+
     const data = dataToMerge.reduce((accumulator, currentValue, index) => {
-        let isSingleValueEqual = false;
+        const accumulatorLength = Object.keys(accumulator).length;
+        const currentValueLength = Object.keys(currentValue).length;
 
-        for (const key in currentValue) {
-            if (currentValue[key] === accumulator[key]) isSingleValueEqual = true;
-
-            if (Array.isArray(currentValue[key])) console.log('arr', currentValue[key])
-        }
-
-        if (isSingleValueEqual) {
+        if (accumulatorLength === 0) {
             for (const key in currentValue) {
-                if (!accumulator.hasOwnProperty(key)) {
-                    accumulator[key] = currentValue[key]
-                }
+                accumulator[key] = currentValue[key];
             }
-        } else {
-            // console.log('---', dataToMerge[index])
-            restOfData.push(dataToMerge[index]);
+            return accumulator;
         }
-
-
-        // findData(restOfData);
 
         return accumulator;
-    })
 
-    return data;
+    }, {})
+
+    return ['result', data];
 }
 
 const arrayOfObjects = [
-    { id: 1, name: "Grzegorz" },
+    { id: 1, name: "Grzegorz", surname: "NieGrzegor12z" },
     { name: "Grzegorz", surname: "NieGrzegorz", animal: { name: "Czarny", age: 1 } },
     { id: 1, city: 'Gliwice' },
     { age: 1, color: 'Black' },

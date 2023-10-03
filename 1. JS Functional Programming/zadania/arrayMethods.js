@@ -131,22 +131,23 @@ const someFn = (arr, callback) => {
 // console.log('some', someFn(arr2, callbackFn2));
 
 
-const reduceFn = (arr, callback, initialValue) => {
+const reduceFn = (array, callback, initialValue) => {
     isValueArrayType([arr]);
     isValueFunctionType([callback]);
 
     let accumulator = initialValue;
-    if (accumulator === undefined) accumulator = arr[0];
+    if (accumulator === undefined) accumulator = array[0];
 
-    for (const [index, currentValue] of arr.entries()) {
-        accumulator = callback(accumulator, currentValue, index);
+    for (const [index, currentValue] of array.entries()) {
+        accumulator = callback(accumulator, currentValue, index, array);
     }
 
     return accumulator;
 }
 
-const reduceCallback = (accumulator, currentValue, index, arr) => {
-    accumulator += currentValue;
+const reduceCallback = (accumulator, currentValue, index, array) => {
+    console.log(index, currentValue)
+    accumulator += currentValue + index;
     return accumulator;
 }
 

@@ -11,7 +11,8 @@ const generateArrayWithRandomNumbers = (howManyNumbers, min, max) => {
 
     const arrayWithRandomNumbers = new Array(howManyNumbers);
 
-    for (let [index, element] of arrayWithRandomNumbers.entries()) {
+    // airbnb -> javascript best practices //map
+    for (const index of arrayWithRandomNumbers.keys()) {
         const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
         arrayWithRandomNumbers[index] = randomNumber;
     }
