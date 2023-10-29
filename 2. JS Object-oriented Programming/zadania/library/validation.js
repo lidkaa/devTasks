@@ -120,8 +120,12 @@ export class Validation {
 
     static isValueValidEmailFormat() {
         const mailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        const mailRegExpObj = new RegExp(mailRegExp, 'gi');
-        const condition = value => mailRegExpObj.test(value);
+
+        function condition(value) {
+            const mailRegExpObj = new RegExp(mailRegExp, 'gi');
+            return mailRegExpObj.test(value);
+        }
+
         this.validate(condition);
 
         if (!this.result && this.shouldThrowError) throw new Error('Pass the valid mail format');

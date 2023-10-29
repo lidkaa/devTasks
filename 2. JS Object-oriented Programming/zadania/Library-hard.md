@@ -60,5 +60,6 @@ class Library {
     // - usuwanie książek z listy
     // - wypożyczanie książki dla usera X
     // - oddanie wypożyczania książki
+    // userbędę
 }
 ```

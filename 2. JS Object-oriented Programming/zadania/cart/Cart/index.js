@@ -1,22 +1,18 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Validation } from '../Utils/validation.js'
+import { Validation } from '../validation.js'
+import { CartItem } from '../CartItem/index.js';
 
 export class Cart {
 
-    constructor() {
-        this._id = uuidv4();
-        this.products = null;
-        this.discount = null;
-        this.discountCode = null;
-    }
-
-    _init(data) {
+    constructor(data) {
+        Validation.init(data).isValueObjectType().isValueObjectNotEmpty();
         Validation.init(data.discount).isValueNumberType().isValuePositiveNumber();
         Validation.init(data.discountCode).isValueStringType().isValueStringNotEmpty();
-        Validation.init(data.products).isValueArrayType().isValueArrayNotEmpty();
+        Validation.init(data.cartItems).isValueArrayType().isValueArrayNotEmpty();
 
-        this.products = data.products;
-        this.discount = data.discount;
+        this._id = uuidv4();
+        this.cartItems = data.cartItems;
+        this.discountPercentage = data.discount;
         this.discountCode = data.discountCode;
     }
 
@@ -24,72 +20,73 @@ export class Cart {
         return this._id;
     }
 
-    addProduct(product) {
+    addCartItem(cartItem) {
+        // instanceof
+        this.cartItemValidation(cartItem);
+        const foundCartItem = this.cartItems.find(item => item.id === cartItem.id);
 
-        // zla
+        if (foundCartItem) {
+            foundCartItem.incrementQuantity();
 
-        const isProductValid = Validation.init(product).isValueObjectType().isValueObjectNotEmpty().result;
-        const productExists = this.products.filter(item => item.product.id === product.id)[0];
-
-        if (isProductValid && !productExists) {
-
-            const newProduct = {
-                product: product,
-                amount: 1
-            }
-
-            this.products.push(newProduct);
+            return
         }
 
-        if (productExists) {
-            for (const item of this.products) {
-                if (item.product.id === product.id) item.amount++
-            }
-        }
+        this.cartItems.push(cartItem);
     }
 
-    removeProduct(product) {
-        const isProductValid = Validation.init(product).isValueObjectType().isValueObjectNotEmpty().result;
-        const productExists = this.products.filter(item => item.product.id === product.id)[0];
+    removeCartItem(cartItem) {
+        this.cartItemValidation(cartItem);
+        const cartItemExists = this.cartItems.filter(item => item.id === cartItem.id)[0];
+        if (!cartItemExists) throw new Error('This cartItem does not exist in this cart');
 
-        if (!productExists) throw new Error('Product does not exist in this cart');
-
-        if (isProductValid) {
-            for (const [index, item] of this.products.entries()) {
-                if (item.id === product.id) this.products.splice(index, 1);
+        if (cartItemExists) {
+            for (const [index, item] of this.cartItems.entries()) {
+                if (item.id === cartItem.id) this.cartItems.splice(index, 1);
             }
         }
     }
-    // value
-    changeProductAmount(product, change) {
-        const isProductValid = Validation.init(product).isValueObjectType().isValueObjectNotEmpty().result;
-        const productToUpdate = this.products.filter(item => item.product.id === product.id)[0];
 
-        if (isProductValid && productToUpdate) {
-            if (change === 'increase') productToUpdate.amount++;
-            if (change === 'decrease' && productToUpdate.amount > 0) productToUpdate.amount--;
-        }
-        console.log('or', productToUpdate)
+    changeCartItemQuantity(cartItem, newQuantity) {
+        this.cartItemValidation(cartItem);
+        Validation.init(newQuantity).throwError().isValueNumberType().isValuePositiveNumber();
 
-        if (productToUpdate.amount === 0) this.removeProduct(product);
+        cartItem.changeProductQuantity(newQuantity);
+
+        const isCartLineQuantityPositive = newQuantity > 0
+        if (!isCartLineQuantityPositive) this.removeCartItem(cartItem);
+
     }
 
-    sumUpTheCart() {
+    sumUpTheCart(discountCode) {
         let sumOfTheCart = 0;
-        const productsPricesSum = this.products.reduce((accumulator, currentItem) => {
-            const productPriceWithDiscount = currentItem.product.calculatePriceWithDiscount() * currentItem.amount;
-            accumulator = accumulator + productPriceWithDiscount;
+
+        const cartItemsPricesSum = this.cartItems.reduce((accumulator, currentItem) => {
+            const cartItemTotalPrice = currentItem.product.priceMinusDiscountAmount * currentItem.productQuantity;
+            accumulator = accumulator + cartItemTotalPrice;
             return accumulator;
         }, 0)
 
-        if (this.discountCode) {
-            sumOfTheCart = productsPricesSum - productsPricesSum * this.discount * 0.01;
+        if (discountCode) {
+            Validation.init(discountCode).throwError().isValueStringType().isValueStringNotEmpty();
+            const isDiscountCodeValid = this.discountCode === discountCode;
+
+            if (!isDiscountCodeValid) throw new Error('Your discount code is not valid');
+
+            sumOfTheCart = cartItemsPricesSum - cartItemsPricesSum * this.discountPercentage * 0.01;
+
+            return sumOfTheCart;
         }
-        return sumOfTheCart;
+
+        return cartItemsPricesSum;
+    }
+
+    cartItemValidation(cartItem) {
+        const isCartItemValid = cartItem instanceof CartItem;
+        if (!isCartItemValid) throw Error('The cartItem object is invalid');
     }
 }
 // Ma mieć: uuid, listę wybranych przedmiotów, rabat % na koszyk, kod rabatowy
-// Ma umożliwiać: 
+// Ma umożliwiać:
 // - dodawanie/usuwanie przedmiotów do/z koszyka
 // - zmianę ilości produktu w koszyku
 // - podliczać wartość koszyka uwzględniajac rabaty
@@ -100,4 +97,3 @@ export class Cart {
 
 // Cart
 
-cart.addProduct(CartItem)

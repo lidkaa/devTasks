@@ -1,38 +1,44 @@
 import { Cart } from './Cart/index.js';
 import { CartItem } from './CartItem/index.js';
+import { Product } from './Product/index.js';
 
 const item1 = {
     name: 'keyboard',
-    category: 'devices',
-    price: 5,
+    category: ['devices', 'electronic'],
+    price: 50,
+    currency: 'PLN',
     discount: 10
 }
 
 const item2 = {
     name: 'mouse',
-    category: 'devices',
+    category: ['devices'],
     price: 15,
+    currency: 'PLN',
     discount: 5
 }
 
-const newCartItem1 = new CartItem();
-newCartItem1._init(item1)
-const newCartItem2 = new CartItem()
-newCartItem2._init(item2)
+const product1 = new Product(item1);
+const product2 = new Product(item2);
 
-console.log(newCartItem1)
+// console.log(product2);
 
-const cartInst = {
-    products: [{ product: newCartItem1, amount: 5 }, { product: newCartItem2, amount: 5 }],
+const cartItem1 = new CartItem(product1, 5);
+const cartItem2 = new CartItem(product2, 5);
+// console.log(cartItem1)
+
+cartItem1.changeProductQuantity(15);
+// console.log(cartItem1)
+
+
+const cartObject = {
+    cartItems: [cartItem1, cartItem2],
     discount: 10,
-    discountCode: 'FGFG5'
+    discountCode: '1010'
 }
 
-const newCart = new Cart();
-newCart._init(cartInst);
-newCart.addProduct(newCartItem1);
-newCart.changeProductAmount(newCartItem1, 'increase');
-newCart.changeProductAmount(newCartItem2, 'decrease');
-newCart.removeProduct(newCartItem1);
-console.log('sum', newCart.sumUpTheCart());
-console.log(newCart)
+const cart1 = new Cart(cartObject);
+cart1.changeCartItemQuantity(cartItem1, 222);
+console.log(cart1.sumUpTheCart('1010'));
+
+console.log(cart1);
