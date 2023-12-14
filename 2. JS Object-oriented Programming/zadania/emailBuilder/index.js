@@ -1,9 +1,13 @@
 import { EmailBuilder } from './EmailBuilder/index.js';
-import { Director } from './Director/index.js';
+import { JSONConverter } from './JSONConverter/index.js';
 
-const emailBuilder1 = new EmailBuilder();
-emailBuilder1.setFrom('lidka@cuvs.net').setReceivers('to', 'la@cuvs.net').setReceivers('cc', 'll@cuvs.net').setTitle('Test').setHtml('Mail text').buildEmail();
-console.log(emailBuilder1);
-const director1 = new Director(emailBuilder1);
-director1.setJSONFormat();
-console.log(director1);
+const emailBuilderObj = new EmailBuilder();
+emailBuilderObj.setFrom('lidka@cuvs.net')
+    .setReceivers('to', 'la@cuvs.net')
+    .setReceivers('cc', 'll@cuvs.net')
+    .setTitle('Test')
+    .setHtml('Mail text')
+    .buildEmail();
+
+const JSONFormat = new JSONConverter(emailBuilderObj);
+

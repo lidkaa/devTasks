@@ -3,18 +3,34 @@ import { Mail } from '../Mail/index.js';
 
 export class EmailBuilder {
 
+    constructor() {
+        this.from = null;
+        this.to = null;
+        this.cc = null;
+        this.bcc = null;
+        this.title = null;;
+        this.html = null;
+    }
+
     setFrom(email) {
-        Validation.init(email).throwError().isValueValidEmailFormat;
+        Validation.init(email).throwError().isValueValidEmailFormat();
         this.from = email;
         return this;
     }
 
-    setReceivers(receiversKind, ...emails) {
-        const receiversData = emails;
-        for (const email of receiversData) {
-            Validation.init(email).throwError().isValueValidEmailFormat;
+    setReceivers(receiverKind, ...emails) {
+
+        Validation.init(receiverKind).throwError().isValueStringType().isValueStringNotEmpty();
+        // to do wspolnej funkcji
+        const receiverKinds = ['to', 'cc', 'bcc'];
+        const isReceiverKindValid = receiverKinds.find(item => item === receiverKind);
+        if (!isReceiverKindValid) throw new Error('Wrong receiver type');
+
+        for (const email of emails) {
+            Validation.init(email).throwError().isValueValidEmailFormat();
         }
-        this[receiversKind] = receiversData;
+        this[receiverKind] = emails;
+
         return this;
     }
 
@@ -31,7 +47,7 @@ export class EmailBuilder {
     }
 
     buildEmail() {
+        // ograniczyc tylko do pol ktore potrzebuje faktycznie Mail
         return new Mail(this);
     }
-
 }

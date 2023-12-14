@@ -12,6 +12,7 @@ export class Validation {
             return this;
         }
 
+
         throw new Error('Pass a value to validate');
     }
 
@@ -126,7 +127,7 @@ export class Validation {
         const mailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         function condition(value) {
-            const mailRegExpObj = new RegExp(mailRegExp, 'gi');
+            const mailRegExpObj = new RegExp(mailRegExp);
             return mailRegExpObj.test(value);
         }
 
