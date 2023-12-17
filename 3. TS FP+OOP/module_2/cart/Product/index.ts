@@ -1,6 +1,8 @@
 import { v1 as uuid } from 'uuid';
 import { Validation } from '../../../validation.ts'
 
+// utility types
+
 interface ProductInterface {
     readonly id: string;
     name: string;
@@ -17,14 +19,14 @@ interface ProductInterface {
 }
 
 export class Product implements ProductInterface {
-    readonly id: string;
-    name: string;
-    category: string[];
-    price: number;
-    currency: string;
-    discountPercentage: number;
-    discountAmount: number;
-    priceMinusDiscountAmount: number;
+    public readonly id: string;
+    public name: string;
+    public category: string[];
+    public price: number;
+    public currency: string;
+    public discountPercentage: number;
+    public discountAmount: number;
+    public priceMinusDiscountAmount: number;
 
     constructor(data: any) {
         Validation.init(data).throwError().isValueObjectNotEmpty();
@@ -65,3 +67,6 @@ export class Product implements ProductInterface {
     }
 }
 
+// const myProduct = new Product({})
+// myProduct.addCategory = () => {}
+// myProduct.currency = ''
