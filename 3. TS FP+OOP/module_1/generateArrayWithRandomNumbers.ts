@@ -1,5 +1,3 @@
-//import { Validation } from './validation.ts'
-
 const generateArrayWithRandomNumbers = (howManyNumbers: number, min: number, max: number): number[] => {
     const isScopeValid = min < max;
 

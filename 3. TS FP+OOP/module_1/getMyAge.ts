@@ -1,12 +1,14 @@
 const getMyAge = (value: number | string | Date) => {
 
     const isDateObjectValidValue = value instanceof Date;
+    const isDateStringType = typeof value === 'string';
+    const isDateNumberType = typeof value === 'number';
     const currentYear = new Date().getFullYear();
     let yearOfBirth = 0;
 
     if (isDateObjectValidValue) yearOfBirth = value.getFullYear();
-
-    yearOfBirth = parseInt(value as string);
+    if (isDateStringType) yearOfBirth = parseInt(value);
+    if (isDateNumberType) yearOfBirth = value;
 
     const isYearOfBirthValid = currentYear > yearOfBirth;
 

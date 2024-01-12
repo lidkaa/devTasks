@@ -17,10 +17,10 @@ const aggregateIntoChunks = <T>(array: T[], min: number = 4, max: number = 7) =>
         }
     }
 
-    const copiedarrayarray = array.slice();
+    const copiedArray = array.slice();
 
     const results = randomChunksLengths.reduce((accumulator: T[][], currentValue: number) => {
-        const chunk: T[] = copiedarrayarray.splice(0, currentValue);
+        const chunk: T[] = copiedArray.splice(0, currentValue);
         accumulator.push(chunk);
         return accumulator;
     }, [])

@@ -1,43 +1,38 @@
-type CallbackType<T> = (value: T, index?: number, array?: T[]) => any;
+type ArrayType = unknown;
+type ArrayMethodFunctionType = <T>(array: T[], callback: Function) => void;
 
-const callbackFn: CallbackType<number> = (val, index, array): number => {
-    return val = val + 3;
+
+const callbackFn = (value: number) => {
+    return value = value + 3;
 }
 
-const callbackFn2: CallbackType<number> = (val, index, array): boolean => {
-    return val % 2 === 0;
+const callbackFn2 = (value: number) => {
+    return value % 2 === 0;
 }
 
-const callbackFn3: CallbackType<string | any[]> = val => {
-    return val.length === 3;
+const callbackFn3 = (value: string | ArrayType[]) => {
+    return value.length === 3;
 }
 
-const arr = [1, 2, 3, 'a'];
+const arr = [1, 2, 3, 4];
 const arr2 = [2, 4, 8, 9, 10];
 const arr3 = ['one', 'two', 'three', 'four'];
 
 
-//jak to zrobić z T?
-//tj. ArrayMethodType<T> = (array: T[], callback: CallbackType<T>) => any //
-// type ArrayType<T> = T[];
-
-type ArrayMethodType = (array: any[], callback: CallbackType<any>) => any;
-
-
-const forEachFn: ArrayMethodType = (arr, callback) => {
+const forEachFn: ArrayMethodFunctionType = (arr, callback) => {
     for (const [index, element] of arr.entries()) {
         callback(element, index, arr);
     }
 }
 
-// console.log('NATIVE forEach', arr.forEach(callbackFn))
-// console.log('forEach', forEachFn(arr, callbackFn));
+console.log('NATIVE forEach', arr.forEach(callbackFn));
+console.log('forEach', forEachFn(arr, callbackFn));
 
 // -------------------------------------------
 
-const mapFn: ArrayMethodType = (arr, callback) => {
+const mapFunction: ArrayMethodFunctionType = (arr, callback) => {
 
-    const mappedArr: any[] = [];
+    const mappedArr: ArrayType[] = [];
 
     for (const [index, element] of arr.entries()) {
         const result = callback(element, index, arr);
@@ -46,6 +41,12 @@ const mapFn: ArrayMethodType = (arr, callback) => {
 
     return mappedArr;
 }
+
+const numbers = [2, 3, 5, 6]
+
+mapFunction(numbers, (element, index, array) => {
+    return element + 1
+})
 
 // const testArr = ["1", "2", "3"]
 // console.log(testArr.map((element, index, array) => {
@@ -57,12 +58,12 @@ const mapFn: ArrayMethodType = (arr, callback) => {
 
 // -------------------------------------------
 
-// console.log('NATIVE map', arr.map(callbackFn));
-// console.log('map', mapFn(arr, callbackFn))
+console.log('NATIVE map', arr.map(callbackFn));
+console.log('map', mapFunction(arr, callbackFn))
 
 
-const entriesFn: ArrayMethodType = arr => {
-    const arrayOfEntries: any[] = [];
+const entriesFn: ArrayMethodFunctionType = arr => {
+    const arrayOfEntries: ArrayType[] = [];
 
     for (const [index, element] of arr.entries()) {
         const elementArray: any[] = [];
@@ -79,9 +80,9 @@ const entriesFn: ArrayMethodType = arr => {
 // console.log('entries', entriesFn(arr));
 
 
-const filterFn: ArrayMethodType = (arr, callback) => {
+const filterFunction: ArrayMethodFunctionType = (arr, callback) => {
 
-    const filteredElementArr: any[] = [];
+    const filteredElementArr: ArrayType[] = [];
 
     for (const [index, element] of arr.entries()) {
         const result = callback(element, index, arr);
@@ -92,10 +93,10 @@ const filterFn: ArrayMethodType = (arr, callback) => {
 }
 
 // console.log('NATIVE filter', arr2.filter(callbackFn2));
-// console.log('filter', filterFn(arr2, callbackFn2));
+// console.log('filter', filterFunction(arr2, callbackFn2));
 
 
-const everyFn: ArrayMethodType = (arr, callback) => {
+const everyFunction: ArrayMethodFunctionType = (arr, callback) => {
 
     for (const [index, element] of arr.entries()) {
         const result = callback(element, index, arr);
@@ -106,11 +107,11 @@ const everyFn: ArrayMethodType = (arr, callback) => {
 };
 
 // console.log('NATIVE every', arr2.every(callbackFn2));
-// console.log('every', everyFn(arr2, callbackFn2));
+// console.log('every', everyFunction(arr2, callbackFn2));
 
 
 
-const someFn: ArrayMethodType = (arr, callback) => {
+const someFunction: ArrayMethodFunctionType = (arr, callback) => {
 
     for (const [index, element] of arr.entries()) {
         const result = callback(element, index, arr);
@@ -123,10 +124,13 @@ const someFn: ArrayMethodType = (arr, callback) => {
 // console.log('NATIVE some', arr2.some(callbackFn2));
 // console.log('some', someFn(arr2, callbackFn2));
 
-type ReduceCallbackType = (accumulator: any, currentValue: any, index?: number, array?: any[]) => any;
-type ReduceFnType = (array: any[], callback: ReduceCallbackType, initialValue?: any) => any;
 
-const reduceFn: ReduceFnType = (array, callback, initialValue) => {
+// DO POPRAWY
+type BaseValues = number | string | [] | {};
+type RCallbackType<T> = (accumulator: T, currentValue: T, index?: number, array?: T[]) => T | BaseValues;
+type ReduceFnType<T> = (array: T[], callback: RCallbackType<T>, initialValue?: T) => T;
+
+const reduceFn: ReduceFnType<ArrayType> = (array, callback, initialValue) => {
 
     let accumulator = initialValue;
     if (accumulator === undefined) accumulator = array[0];
@@ -138,7 +142,7 @@ const reduceFn: ReduceFnType = (array, callback, initialValue) => {
     return accumulator;
 }
 
-const reduceCallback: ReduceCallbackType = (accumulator, currentValue, index, array) => {
+const reduceCallback: RCallbackType<number> = (accumulator, currentValue, index, array) => {
     console.log(index, currentValue)
     accumulator += currentValue + index;
     return accumulator;

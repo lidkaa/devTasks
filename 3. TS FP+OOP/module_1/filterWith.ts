@@ -1,13 +1,17 @@
 import { data } from './filterWith_Data.ts';
 
-const filterData = <T>(dataChunk: T, phraseString: string | undefined = undefined): any => {
+type ReturnValues = string | number | {} | [] | Boolean;
 
-    const phraseRegExp: RegExp = new RegExp(phraseString as string, 'gi');   //as string ?
+const filterData = <T>(dataChunk: T, phrase?: string): ReturnValues => {
 
-    const typeofDataChunk = typeof dataChunk;
+    let phraseRegExp: RegExp;
 
-    if (typeofDataChunk === 'string') {
-        if (phraseRegExp.test(dataChunk as string)) return true;
+    if (phrase) {
+        phraseRegExp = new RegExp(phrase, 'gi');
+        const typeofDataChunk = typeof dataChunk;
+        if (typeofDataChunk === 'string') {
+            if (phraseRegExp.test(dataChunk as string)) return true;
+        }
     }
 
     if (Array.isArray(dataChunk)) {
@@ -29,18 +33,15 @@ const filterData = <T>(dataChunk: T, phraseString: string | undefined = undefine
     return false
 }
 
-
-const filterWith = <T>(data: T[], phrase: string): any => {
-    const phraseString = phrase.toString();
-
-    const isPhraseLongEnough = phraseString.length > 2
+const filterWith = <T>(data: T[], phrase: string): T[] => {
+    const isPhraseLongEnough = phrase.length > 2
     if (!isPhraseLongEnough) return [];
 
 
     const result = data.filter(dataPart => {
         for (const val in dataPart) {
             const dataChunk = dataPart[val];
-            if (filterData(dataChunk, phraseString)) return true;
+            if (filterData(dataChunk, phrase)) return true;
         }
     })
 
@@ -48,4 +49,4 @@ const filterWith = <T>(data: T[], phrase: string): any => {
 }
 
 const dataToFilter = data;
-console.log(filterWith(dataToFilter, 'Luann Randall'));
+console.log(filterWith(dataToFilter, 'GORGANIC'));
